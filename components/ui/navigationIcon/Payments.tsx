@@ -1,0 +1,17 @@
+import Svg, { Path, SvgProps } from 'react-native-svg';
+
+import { Colors } from '@/constants/Style';
+
+
+const SvgComponent = (props: SvgProps) => (
+    <Svg width={20} height={20} viewBox="0 0 20 20" style={props.style}>
+        <Path
+            d="M13.2466 0L14.6692 1.42259L18.9094 5.66288L19.4987 6.25213L18.9094 6.84139L14.6692 11.0817L13.2466 12.5043V9.04254H8.02775V3.46175H13.2466V0ZM6.25213 7.35677L4.82954 8.77937L0.589257 13.0196L0 13.6089L0.589257 14.1981L4.82954 18.4385L6.25213 19.861V16.3993H11.4709V10.8185H6.25213V7.35677Z"
+            fill={props.fill ?? Colors.dark.mainIconColor}
+            fillRule='evenodd'
+            clipRule='evenodd'
+        />
+    </Svg>
+)
+
+export default SvgComponent;

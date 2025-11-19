@@ -1,0 +1,33 @@
+import { Card } from '@/types/cards';
+import { StyleSheet, View } from 'react-native';
+import { AddCardButton } from './AddCardButton';
+import { BankCard } from './BankCard';
+
+export const CardsCarousel = () => {
+    const debitCard: Card = {
+        type: 'Debit',
+        number: 4385,
+        balance: 4098.12,
+    }
+    const virtualCard: Card = {
+        type: 'Virtual',
+        number: 9081,
+        balance: 14.71,
+    }
+
+    return (
+        <View style={styles.container}>
+            <BankCard card={debitCard} />
+            <BankCard card={virtualCard} />
+            <AddCardButton />
+        </View>
+    )
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%'
+    },
+})

@@ -1,24 +1,60 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Tabs } from "expo-router";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import Analytics from '@/components/ui/navigationIcon/Analytics';
+import Chats from '@/components/ui/navigationIcon/Chats';
+import History from '@/components/ui/navigationIcon/History';
+import Home from '@/components/ui/navigationIcon/Home';
+import Payments from '@/components/ui/navigationIcon/Payments';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { Colors } from "@/constants/Style";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: Colors.dark.mainBorderColor,
+          borderTopWidth: 0,
+        },
+        tabBarActiveTintColor: Colors.dark.activeIconColor,
+        tabBarInactiveTintColor: Colors.dark.mainIconColor,
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <Home fill={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="payments"
+        options={{
+          title: 'Payments',
+          tabBarIcon: ({ color }) => <Payments fill={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="history"
+        options={{
+          title: 'History',
+          tabBarIcon: ({ color }) => <History fill={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="analytics"
+        options={{
+          title: 'Analytics',
+          tabBarIcon: ({ color }) => <Analytics fill={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="chats"
+        options={{
+          title: 'Chats',
+          tabBarIcon: ({ color }) => <Chats fill={color} />,
+        }}
+      />
+    </Tabs>
   );
 }
