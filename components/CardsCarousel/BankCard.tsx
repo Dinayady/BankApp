@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import { Card } from '@/types/cards';
+import { formatNumber } from '@/utils/formatNumber';
 
 import CardIcon from '@/components/ui/Card';
 
 import { Colors, fonts, text } from '@/constants/Style';
-import { formatNumber } from '@/utils/formatNumber';
 
 interface BankCardProps {
     card: Card;

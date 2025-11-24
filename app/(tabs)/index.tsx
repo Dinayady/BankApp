@@ -1,14 +1,15 @@
 import { ScrollView, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { Transactions } from "@/mockData/mockTransactions";
 
 import { CardsCarousel } from "@/components/CardsCarousel/CardsCarousel";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { ExpensesSummary } from "@/components/ExpensesSummary";
-import { Header } from "@/components/Header";
-
 import { TransactionsList } from "@/components/TransactionsList";
+import { UserHeader } from "@/components/UserHeader";
+
 import { Colors } from "@/constants/Style";
-import { Transactions } from "@/mockData/mockTransactions";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
 
@@ -19,7 +20,7 @@ export default function Index() {
         backgroundColor: Colors.dark.mainBackground,
       }}
     >
-      <Header />
+      <UserHeader />
       <ScrollView>
         <View style={{ paddingVertical: 24 }}>
           <CategoryTabs />

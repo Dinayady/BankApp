@@ -1,8 +1,11 @@
-import { Colors, fonts, text } from "@/constants/Style";
-import { formatNumber } from "@/utils/formatNumber";
 import { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
+
+import { formatNumber } from "@/utils/formatNumber";
+
 import { MultiSegmentProgressBar } from "./MultiSegmentProgressBar";
+
+import { Colors, fonts, text } from "@/constants/Style";
 
 interface ExpensesSummaryProps {
     month: string;

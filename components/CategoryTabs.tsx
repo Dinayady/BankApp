@@ -6,6 +6,7 @@ import Bonuses from '@/components/ui/categoryIcon/Bonuses';
 import Deliver from '@/components/ui/categoryIcon/Delivery';
 import Support from '@/components/ui/categoryIcon/Support';
 import Travel from '@/components/ui/categoryIcon/Travel';
+
 import { Colors } from '@/constants/Style';
 
 export const CategoryTabs = () => {

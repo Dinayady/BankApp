@@ -9,3 +9,7 @@ export const Anna: User = {
     name: 'Anna',
     image: require('@/assets/images/Anna.jpg'),
 }
+
+export const Card: User = {
+    name: '•• 2041',
+}

@@ -1,5 +1,7 @@
-import { Card } from '@/types/cards';
 import { StyleSheet, View } from 'react-native';
+
+import { Card } from '@/types/cards';
+
 import { AddCardButton } from './AddCardButton';
 import { BankCard } from './BankCard';
 

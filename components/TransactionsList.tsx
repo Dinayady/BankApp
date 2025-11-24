@@ -12,7 +12,7 @@ interface TransactionsListProps {
     data: Transaction[];
 }
 
-const MOCK_TODAY = "2025-03-12";
+export const MOCK_TODAY = "2025-03-12";
 
 export const TransactionsList: FC<TransactionsListProps> = ({
     data,

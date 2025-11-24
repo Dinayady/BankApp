@@ -1,53 +1,52 @@
-import { Text, View } from 'react-native';
+import { useNavigation } from "expo-router";
+import { FC } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Arrow from '@/components/ui/Arrow';
-import Qrcode from '@/components/ui/Qrcode';
-import UserAvatar from '@/components/ui/UserAvatar';
+import Notifications from '@/components/ui/Notifications';
 
-import { Colors, fonts, text } from '@/constants/Style';
+import { Colors, fonts, text } from "@/constants/Style";
 
-export const Header = () => {
+interface HeaderProps {
+    title: string;
+}
+
+export const Header: FC<HeaderProps> = ({ title }) => {
+    const navigation = useNavigation();
+
+    const handleBackPress = () => {
+        navigation.goBack();
+    };
+
     return (
-        <View
-            style={{
-                backgroundColor: Colors.dark.mainBackground,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                padding: 16,
-                paddingTop: 20,
-                alignItems: 'center'
-            }}
-        >
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 12,
-            }}>
-                <View style={{
-                    backgroundColor: Colors.dark.secondBackground,
-                    padding: 10,
-                    width: 36,
-                    height: 36,
-                    borderRadius: 36,
-                }}>
-                    <UserAvatar />
-                </View>
-                <View style={{
-                    flexDirection: 'row',
-                    gap: 8,
-                    alignItems: 'center',
-                }}>
-                    <Text style={{
-                        color: Colors.dark.mainTextColor,
-                        ...fonts.medium,
-                        ...text.md
-                    }}>
-                        Charlotte
-                    </Text>
-                    <Arrow />
-                </View>
-            </View>
-            <Qrcode />
+        <View style={styles.container}>
+            <TouchableOpacity onPress={handleBackPress}>
+                <Arrow
+                    width={9}
+                    height={14}
+                    strokeWidth={2}
+                    style={{ transform: [{ rotate: '180deg' }] }}
+                />
+            </TouchableOpacity>
+            <Text style={styles.title}>
+                {title}
+            </Text>
+            <Notifications />
         </View>
     )
-}
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 25,
+        paddingVertical: 16,
+    },
+    title: {
+        color: Colors.dark.mainTextColor,
+        ...text.xl,
+        ...fonts.bold
+    }
+})
