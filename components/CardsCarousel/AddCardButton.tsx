@@ -1,14 +1,19 @@
-import { StyleSheet, View } from 'react-native';
+import { FC } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import Plus from '@/components/ui/Plus';
 
 import { Colors } from '@/constants/Style';
 
-export const AddCardButton = () => {
+interface AddCardButtonProps {
+    onClick: () => void;
+}
+
+export const AddCardButton: FC<AddCardButtonProps> = ({ onClick }) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onClick}>
             <Plus />
-        </View>
+        </TouchableOpacity>
     )
 };
 

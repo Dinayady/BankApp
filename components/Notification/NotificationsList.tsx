@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { SectionList, StyleSheet, Text, View } from "react-native";
 
 import { Notifications } from "@/mockData/mockNotifications";
@@ -10,10 +10,35 @@ import { NotificationItem } from "./NotificationItem";
 
 import { Colors, fonts, text } from "@/constants/Style";
 
-export const NotificationsList = () => {
+const NOTIFICATION_TYPES = {
+  All: 'All',
+  Payments: 'Payments',
+  System: 'System',
+  Delivery: 'Delivery',
+  Travel: 'Travel'
+};
+
+interface NotificationsListProps {
+  activeTab: number;
+}
+
+export const NotificationsList: FC<NotificationsListProps> = ({ activeTab }) => {
+  const filteredNotifications = useMemo(() => {
+    if (activeTab === 0) {
+      return Notifications;
+    }
+
+    const tabName = Object.keys(NOTIFICATION_TYPES)[activeTab];
+    const notificationType = NOTIFICATION_TYPES[tabName as keyof typeof NOTIFICATION_TYPES];
+
+    return Notifications.filter(notification =>
+      notification.type === notificationType
+    );
+  }, [Notifications, activeTab]);
+
   const sections = useMemo(() => {
-    return groupTransactions(Notifications, MOCK_TODAY, true);
-  }, [Notifications]);
+    return groupTransactions(filteredNotifications, MOCK_TODAY, true);
+  }, [filteredNotifications]);
 
   return (
     <View>

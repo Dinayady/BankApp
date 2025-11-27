@@ -22,7 +22,7 @@ export default function Notifications() {
                 setActiveTabs={setActiveTabs}
             />
             <ScrollView>
-                <NotificationsList />
+                <NotificationsList activeTab={activeTabs} />
             </ScrollView>
         </SafeAreaView>
     )

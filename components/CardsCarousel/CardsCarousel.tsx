@@ -17,11 +17,15 @@ export const CardsCarousel = () => {
         balance: 14.71,
     }
 
+    const onClickButton = () => {
+        // TODO: implementation of adding additional bank cards
+    }
+
     return (
         <View style={styles.container}>
             <BankCard card={debitCard} />
             <BankCard card={virtualCard} />
-            <AddCardButton />
+            <AddCardButton onClick={onClickButton} />
         </View>
     )
 };
